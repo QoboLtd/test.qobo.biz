@@ -9,6 +9,7 @@
 class Parameter implements iParameter {
 
 	const PARAMATER_TYPE_TEXT = 'text';
+	const PARAMATER_TYPE_HIDDEN = 'hidden';
 
 	protected $name;
 	protected $type;
