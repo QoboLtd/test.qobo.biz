@@ -19,6 +19,9 @@ class TestFactory {
 		foreach ($dir as $file) {
 			// Non-recursive list
 			if ($file->isDir()) continue;	
+
+			// Non-PHP files
+			if ($file->getExtension() <> 'php') continue;
 			
 			$className = basename($file->getFilename(), '.' . $file->getExtension());
 			
