@@ -13,6 +13,8 @@ require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Parameters' . DIRECTORY_
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Parameters' . DIRECTORY_SEPARATOR . 'Parameter.php';
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Parameters' . DIRECTORY_SEPARATOR . 'TextParameter.php';
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Parameters' . DIRECTORY_SEPARATOR . 'UrlParameter.php';
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Parameters' . DIRECTORY_SEPARATOR . 'HiddenParameter.php';
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Parameters' . DIRECTORY_SEPARATOR . 'HttpClientParameter.php';
 
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Tests' . DIRECTORY_SEPARATOR . 'iTest.php';
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Tests' . DIRECTORY_SEPARATOR . 'BaseTest.php';
