@@ -21,8 +21,29 @@ class UrlTest extends BaseTest {
 			$this->lastResult = $valid;
 			return $this->lastResult;
 		}
-		$this->lastResult = new Result(Result::SUCCESS);
 
+		$httpClient = $params['httpClient'];
+		$url = $params['url'];
+		
+		try {
+			$res = $httpClient->get($url);
+			$statusCode = $res->getStatusCode();
+		}
+		catch(Exception $e) {
+			$this->lastResult = new Result(Result::FAILURE, "Failed to fetch URL[$url]: " . $e->getMessage());
+		}
+
+		switch($statusCode) {
+			case '200':
+			case '301':
+			case '302':
+				$this->lastResult = new Result(Result::SUCCESS, "HTTP status code: $statusCode");
+				break;
+			default:
+				$this->lastResult = new Result(Result::FAILURE, "HTTP status code: $statusCode");
+				break;
+		}
+		
 		return $this->lastResult;
 	}
 	

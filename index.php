@@ -11,6 +11,11 @@ require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARAT
 $result = null;
 
 if (isset($_SERVER['REQUEST_METHOD']) && (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST')) {
+	$httpClient = new GuzzleHttp\Client();
+	$httpClient->timeout = 5;
+
+	$_POST['httpClient'] = $httpClient;
+	
 	$result = TestFactory::runTests($_POST);
 }
 ?>

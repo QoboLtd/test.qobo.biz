@@ -19,6 +19,7 @@ abstract class BaseTest implements iTest {
 	public function __construct() {
 		$this->params = new SplObjectStorage();
 		$this->params->attach(new UrlParameter('url', true, 'URL to test'));
+		$this->params->attach(new HttpClientParameter('httpClient', true, 'HTTP Client to use'));
 	}
 
 	/**
