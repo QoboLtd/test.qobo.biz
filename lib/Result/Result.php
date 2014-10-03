@@ -58,7 +58,7 @@ class Result implements iResult {
 	 * 
 	 * @return string
 	 */
-	public function getDesctription() {
+	public function getDescription() {
 
 		$result = $this->isSuccess ? self::DEFAULT_DESCRIPTION_SUCCESS : self::DEFAULT_DESCRIPTION_FAIL;
 		if (!empty($this->description)) {
@@ -74,7 +74,7 @@ class Result implements iResult {
 	 * @return string
 	 */
 	public function __toString() {
-		return $this->getDesctription();
+		return $this->getDescription();
 	}
 	
 }

@@ -18,7 +18,7 @@ interface iResult {
 	 * 
 	 * @return string
 	 */
-	public function getDesctription();
+	public function getDescription();
 
 	/**
 	 * Convert object to string
