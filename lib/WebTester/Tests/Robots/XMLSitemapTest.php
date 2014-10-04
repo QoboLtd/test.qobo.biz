@@ -5,7 +5,7 @@ namespace WebTester\Tests\Robots;
  * 
  * @author Leonid Mamchenkov <l.mamchenkov@qobo.biz>
  */
-class XMLSitemapTest extends \WebTester\Tests\BaseContentTest {
+class XMLSitemapTest extends \WebTester\Tests\Base\ContentTest {
 
 	protected $name = 'XML Sitemap';
 	protected $description = 'Check that robots.txt contains link to the XML sitemap.';

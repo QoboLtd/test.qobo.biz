@@ -5,7 +5,7 @@ namespace WebTester\Tests\Content;
  * 
  * @author Leonid Mamchenkov <l.mamchenkov@qobo.biz>
  */
-class CopyrightTest extends \WebTester\Tests\BaseContentTest {
+class CopyrightTest extends \WebTester\Tests\Base\ContentTest {
 
 	protected $name = 'Copyright';
 	protected $description = 'Check if the homepage contains copyright.';

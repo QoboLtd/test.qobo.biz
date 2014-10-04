@@ -1,18 +1,18 @@
 <?php
 namespace WebTester\Tests\Base;
 /**
- * BaseUrlTest class
+ * TypeTest class
  * 
  * @author Leonid Mamchenkov <l.mamchenkov@qobo.biz>
  */
-abstract class BaseUrlTest extends BaseTest {
+abstract class TypeTest extends Test {
 
-	protected $name = 'URL Test';
-	protected $description = 'Check if the URL is accessible.';
+	protected $name = 'Type Test';
+	protected $description = 'Check if the response is of certain content type.';
 	
 	public function __construct() {
 		parent::__construct();
-		$this->params->attach(new \WebTester\Parameters\SelectParameter('allowedStatusCodes', true, 'Allowed HTTP status codes'));
+		$this->params->attach(new \WebTester\Parameters\SelectParameter('allowedMimeTypes', true, 'Allowed MIME types'));
 	}
 	
 	/**
@@ -30,23 +30,24 @@ abstract class BaseUrlTest extends BaseTest {
 
 		$httpClient = $params['httpClient'];
 		$url = $params['url'];
-		$allowedStatusCodes = $params['allowedStatusCodes'];
+		$allowedMimeTypes = $params['allowedMimeTypes'];
 		
 		try {
 			$res = $httpClient->get($url);
-			$statusCode = $res->getStatusCode();
+			$contentType = $res->getHeader('content-type');
 		}
 		catch(\Exception $e) {
 			$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::FAILURE, "Failed to fetch URL[$url]: " . $e->getMessage());
 			return $this->lastResult;
 		}
 
-		if (in_array($statusCode, $allowedStatusCodes)) {
-				$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::SUCCESS, "HTTP status code: $statusCode");
+		foreach ($allowedMimeTypes as $allowedMimeType) {
+			if (preg_match('#' . $allowedMimeType . '#i', $contentType)) {
+				$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::SUCCESS, "Content-Type: $contentType");
+				return $this->lastResult;
+			}
 		}
-		else {
-				$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::FAILURE, "HTTP status code: $statusCode");
-		}
+		$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::FAILURE, "Content-Type: $contentType");
 		
 		return $this->lastResult;
 	}

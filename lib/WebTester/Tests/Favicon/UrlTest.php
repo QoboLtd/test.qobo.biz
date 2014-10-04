@@ -5,7 +5,7 @@ namespace WebTester\Tests\Favicon;
  * 
  * @author Leonid Mamchenkov <l.mamchenkov@qobo.biz>
  */
-class UrlTest extends \WebTester\Tests\BaseUrlTest {
+class UrlTest extends \WebTester\Tests\Base\UrlTest {
 
 	protected $name = 'favicon.ico';
 	protected $description = 'Check if favicon.ico is accessible.';

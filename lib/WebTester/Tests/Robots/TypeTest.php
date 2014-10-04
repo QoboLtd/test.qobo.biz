@@ -5,7 +5,7 @@ namespace WebTester\Tests\Robots;
  * 
  * @author Leonid Mamchenkov <l.mamchenkov@qobo.biz>
  */
-class TypeTest extends \WebTester\Tests\BaseTypeTest {
+class TypeTest extends \WebTester\Tests\Base\TypeTest {
 
 	protected $name = 'robots.txt';
 	protected $description = 'Check if robots.txt is a plain text file.';

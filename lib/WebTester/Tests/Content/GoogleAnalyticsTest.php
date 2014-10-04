@@ -5,7 +5,7 @@ namespace WebTester\Tests\Content;
  * 
  * @author Leonid Mamchenkov <l.mamchenkov@qobo.biz>
  */
-class GoogleAnalyticsTest extends \WebTester\Tests\BaseContentTest {
+class GoogleAnalyticsTest extends \WebTester\Tests\Base\ContentTest {
 
 	protected $name = 'Google Analytics';
 	protected $description = 'Check if the is using Google Analytics.';

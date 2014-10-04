@@ -5,7 +5,7 @@ namespace WebTester\Tests\Robots;
  * 
  * @author Leonid Mamchenkov <l.mamchenkov@qobo.biz>
  */
-class UrlTest extends \WebTester\Tests\BaseUrlTest {
+class UrlTest extends \WebTester\Tests\Base\UrlTest {
 
 	protected $name = 'robots.txt';
 	protected $description = 'Check if robots.txt is accessible.';

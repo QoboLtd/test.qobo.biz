@@ -5,7 +5,7 @@ namespace WebTester\Tests\Qobo;
  * 
  * @author Leonid Mamchenkov <l.mamchenkov@qobo.biz>
  */
-class QoboTest extends \WebTester\Tests\BaseContentTest {
+class QoboTest extends \WebTester\Tests\Base\ContentTest {
 
 	protected $name = 'Qobo';
 	protected $description = 'Check that the site is powered by Qobo.';

@@ -5,7 +5,7 @@ namespace WebTester\Tests\Basic;
  * 
  * @author Leonid Mamchenkov <l.mamchenkov@qobo.biz>
  */
-class UrlTest extends \WebTester\Tests\BaseUrlTest {
+class UrlTest extends \WebTester\Tests\Base\UrlTest {
 
 	protected $name = 'Homepage';
 	protected $description = 'Check if the homepage URL is accessible.';

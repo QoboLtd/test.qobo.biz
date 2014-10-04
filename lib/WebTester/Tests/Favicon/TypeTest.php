@@ -5,7 +5,7 @@ namespace WebTester\Tests\Favicon;
  * 
  * @author Leonid Mamchenkov <l.mamchenkov@qobo.biz>
  */
-class TypeTest extends \WebTester\Tests\BaseTypeTest {
+class TypeTest extends \WebTester\Tests\Base\TypeTest {
 
 	protected $name = 'favicon.ico';
 	protected $description = 'Check if favicon.ico is an icon image.';

@@ -5,7 +5,7 @@ namespace WebTester\Tests\Basic;
  * 
  * @author Leonid Mamchenkov <l.mamchenkov@qobo.biz>
  */
-class TypeTest extends \WebTester\Tests\BaseTypeTest {
+class TypeTest extends \WebTester\Tests\Base\TypeTest {
 
 	protected $name = 'Homepage';
 	protected $description = 'Check if the homepage URL is HTML.';
