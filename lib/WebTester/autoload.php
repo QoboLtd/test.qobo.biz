@@ -1,4 +1,7 @@
 <?php
+// Include compatibiity functions
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'compat.php';
+
 /**
  * autoloader for namespaced classed
  * 
