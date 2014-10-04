@@ -11,6 +11,7 @@ class Parameter implements iParameter {
 
 	const PARAMATER_TYPE_TEXT = 'text';
 	const PARAMATER_TYPE_HIDDEN = 'hidden';
+	const PARAMATER_TYPE_SELECT = 'select';
 
 	protected $name;
 	protected $type;
