@@ -47,7 +47,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && (strtoupper($_SERVER['REQUEST_METHOD'])
 	</nav>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<form role="form" method="post">
 					<fieldset>
 						<div class="form-group">
@@ -58,15 +58,15 @@ if (isset($_SERVER['REQUEST_METHOD']) && (strtoupper($_SERVER['REQUEST_METHOD'])
 					</fieldset>
 				</form>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-8">
 				<?php if (!empty($result)) : ?>
-					<table class="table table-responsive table-condensed">
+					<table class="table table-condensed">
 						<thead>
 							<tr>
 								<th colspan="3">Results</th>
 							</tr>
 							<tr>
-								<th>Test</th>
+								<th width="25%">Test</th>
 								<th>Result</th>
 								<th>Comment</th>
 							</tr>
@@ -79,9 +79,9 @@ if (isset($_SERVER['REQUEST_METHOD']) && (strtoupper($_SERVER['REQUEST_METHOD'])
 									$last = $test->getLastResult();
 									
 									echo '<tr class="' . ($last->isSuccess() ? 'success' : 'danger') . '">';
-									echo '<td>' . $test->getName() . '<br /><p class="text-muted">' . $test->getDescription() . '</p></td>';
-									echo '<td>' . ($last->isSuccess() ? 'Pass' : 'Fail') . '</td>';
-									echo '<td>' . $last->getDescription() . '</td';
+									echo '<td>' . $test->getName() . '<br /><small>' . $test->getDescription() . '</small></td>';
+									echo '<td>' . ($last->isSuccess() ? \WebTester\Result\Result::DEFAULT_DESCRIPTION_SUCCESS : \WebTester\Result\Result::DEFAULT_DESCRIPTION_FAIL) . '</td>';
+									echo '<td><small>' . $last->getDescription() . '</small></td';
 									echo '</tr>';
 
 									$result->next();
