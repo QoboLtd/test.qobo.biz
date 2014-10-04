@@ -15,16 +15,30 @@ class TestFactory {
 	public static function getTests() {
 		$result = new \SplObjectStorage();
 		
-		$testsDir = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Tests';
-		$dir = new \DirectoryIterator($testsDir);
-		foreach ($dir as $file) {
+		$currentDir = dirname(__FILE__);
+		
+		$testsDir = $currentDir . DIRECTORY_SEPARATOR . 'Tests';
+		$dir = new \RecursiveDirectoryIterator($testsDir);
+		$iterator = new \RecursiveIteratorIterator($dir);
+		$regex = new \RegexIterator($iterator, '/.*Test\.php$/');
+		foreach ($regex as $file) {
 			// Non-recursive list
 			if ($file->isDir()) continue;	
 
 			// Non-PHP files
 			if ($file->getExtension() <> 'php') continue;
 			
-			$className = '\WebTester\Tests\\' . basename($file->getFilename(), '.' . $file->getExtension());
+			// Full path to class file
+			$className = $file->getRealPath();
+			// Remove current folder path
+			$className = substr($className, strlen($currentDir));
+			// Remove extension
+			$extension = '.' . $file->getExtension();
+			$className = substr($className, 0, strlen($className) - strlen($extension));
+			// Convert directory separators to namespace separators
+			$className = str_replace(DIRECTORY_SEPARATOR, '\\', $className);
+			// Add current namespace prefix
+			$className = __NAMESPACE__ .  $className;
 			
 			$reflection = new \ReflectionCLass($className);
 			

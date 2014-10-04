@@ -1,11 +1,11 @@
 <?php
-namespace WebTester\Tests;
+namespace WebTester\Tests\Basic;
 /**
  * UrlTest class
  * 
  * @author Leonid Mamchenkov <l.mamchenkov@qobo.biz>
  */
-class UrlTest extends BaseTest {
+class UrlTest extends \WebTester\Tests\BaseTest {
 
 	protected $name = 'URL Test';
 	protected $description = 'Check if the URL is accessible.';
