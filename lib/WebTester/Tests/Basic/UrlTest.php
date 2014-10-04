@@ -5,10 +5,10 @@ namespace WebTester\Tests\Basic;
  * 
  * @author Leonid Mamchenkov <l.mamchenkov@qobo.biz>
  */
-class UrlTest extends \WebTester\Tests\BaseTest {
+class UrlTest extends \WebTester\Tests\BaseUrlTest {
 
-	protected $name = 'URL Test';
-	protected $description = 'Check if the URL is accessible.';
+	protected $name = 'Homepage';
+	protected $description = 'Check if the homepage URL is accessible.';
 	
 	/**
 	 * Run test
@@ -17,35 +17,8 @@ class UrlTest extends \WebTester\Tests\BaseTest {
 	 * @return Result
 	 */
 	public function run($params = array()) {
-		$valid = $this->validParams($params);
-		if (!$valid->isSuccess()) {
-			$this->lastResult = $valid;
-			return $this->lastResult;
-		}
-
-		$httpClient = $params['httpClient'];
-		$url = $params['url'];
-		
-		try {
-			$res = $httpClient->get($url);
-			$statusCode = $res->getStatusCode();
-		}
-		catch(Exception $e) {
-			$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::FAILURE, "Failed to fetch URL[$url]: " . $e->getMessage());
-		}
-
-		switch($statusCode) {
-			case '200':
-			case '301':
-			case '302':
-				$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::SUCCESS, "HTTP status code: $statusCode");
-				break;
-			default:
-				$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::FAILURE, "HTTP status code: $statusCode");
-				break;
-		}
-		
-		return $this->lastResult;
+		$params['allowedStatusCodes'] = array(200, 301, 302);
+		parent::run($params);
 	}
 	
 }
