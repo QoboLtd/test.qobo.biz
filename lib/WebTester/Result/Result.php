@@ -28,7 +28,7 @@ class Result implements iResult {
 	/**
 	 * Default description for failed result
 	 */
-	const DEFAULT_DESCRIPTION_FAIL = 'Failed';
+	const DEFAULT_DESCRIPTION_FAIL = 'FAIL';
 
 	private $isSuccess;
 	private $description;
@@ -63,7 +63,7 @@ class Result implements iResult {
 
 		$result = $this->isSuccess ? self::DEFAULT_DESCRIPTION_SUCCESS : self::DEFAULT_DESCRIPTION_FAIL;
 		if (!empty($this->description)) {
-			$result .= '. ' . $this->description;
+			$result = $this->description;
 		}
 
 		return $result;
