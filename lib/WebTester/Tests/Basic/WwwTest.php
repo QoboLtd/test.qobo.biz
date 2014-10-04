@@ -20,7 +20,6 @@ class WwwTest extends \WebTester\Tests\Base\UrlTest {
 	public function run($params = array()) {
 		$params['allowedStatusCodes'] = array(200, 301, 302);
 
-		print "Url before: " . $params['url'] . "<br />";
 		$url = $params['url'];
 		$urlParts = parse_url($url);
 		$urlParts['host'] = (preg_match('/^www\./i', $urlParts['host'])) ? substr($urlParts['host'], 4) : 'www.' . $urlParts['host'];
