@@ -29,6 +29,8 @@ if (isset($_SERVER['REQUEST_METHOD']) && (strtoupper($_SERVER['REQUEST_METHOD'])
 
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Sticky footer -->
+	<link href="css/sticky-footer.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,24 +43,20 @@ if (isset($_SERVER['REQUEST_METHOD']) && (strtoupper($_SERVER['REQUEST_METHOD'])
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Qobo Web Tester</a>
+				<a class="navbar-brand" href="<?php echo $_SERVER['PHP_SELF']; ?>">Qobo Web Tester</a>
 			</div>
+
+			<form class="navbar-form navbar-right" role="form" method="post">
+				<div class="form-group">
+					<input type="url" name="url" class="form-control" id="url" placeholder="http://www.qobo.biz" value="<?php echo empty($_POST['url']) ? 'http://www.qobo.biz' : $_POST['url']; ?>">
+				</div>
+				<input type="submit" class="btn btn-primary" value="Test">
+			</form>
 		</div>
 	</nav>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4">
-				<form role="form" method="post">
-					<fieldset>
-						<div class="form-group">
-							<label for="url">URL to test</label>
-							<input type="url" name="url" class="form-control" id="url" placeholder="http://www.qobo.biz" value="<?php echo empty($_POST['url']) ? 'http://www.qobo.biz' : $_POST['url']; ?>">
-						</div>	
-						<input type="submit" class="btn btn-primary" value="Test">
-					</fieldset>
-				</form>
-			</div>
-			<div class="col-md-8">
+			<div class="col-md-12">
 				<?php if (!empty($result)) : ?>
 					<table class="table table-condensed">
 						<thead>
@@ -66,7 +64,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && (strtoupper($_SERVER['REQUEST_METHOD'])
 								<th colspan="3">Results</th>
 							</tr>
 							<tr>
-								<th width="25%">Test</th>
+								<th>Test</th>
 								<th>Result</th>
 								<th>Comment</th>
 							</tr>
@@ -89,10 +87,23 @@ if (isset($_SERVER['REQUEST_METHOD']) && (strtoupper($_SERVER['REQUEST_METHOD'])
 							?>
 						</tbody>
 					</table>
+				<?php else: ?>
+				<div class="well">
+					<h4>Welcome to the Qobo Web Tester</h4>
+					<p>Here, at Qobo, we strive to build high quality web site and applications.  In an effort to delivery the best possible results we've created a few tools to help us.  Qobo Web Tester is just one such tool.</p>
+					<p>Use the form above to test URLs.  Qobo Web Tester will automagically examine the given page and provide you will some suggestions on how to make it better.</p>
+				</div>
 				<?php endif; ?>
 			</div>
+
 		</div>
 	</div>
+
+			<div class="footer">
+				<div class="container">
+					<p class="text-right text-muted">&copy; Copyright <?php echo date('Y'); ?> <a href="http://www.qobo.biz">Qobo Ltd</a></p>
+				</div>
+			</div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
