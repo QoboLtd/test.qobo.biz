@@ -58,15 +58,18 @@ if (isset($_SERVER['REQUEST_METHOD']) && (strtoupper($_SERVER['REQUEST_METHOD'])
 		<div class="row">
 			<div class="col-md-12">
 				<?php if (!empty($result)) : ?>
-					<h4>Test Results</h4>
-					<strong>URL:</strong> <a target="_blank" href="<?php echo $_POST['url']; ?>"><?php echo $_POST['url']; ?></a><br />
-					<strong>Date:</strong> <?php echo date('F j, Y, g:i a'); ?><br />
+					<h3>Test Results</h3>
+					<small>
+						<strong>URL:</strong> <a target="_blank" href="<?php echo $_POST['url']; ?>"><?php echo $_POST['url']; ?></a><br />
+						<strong>Date:</strong> <?php echo date('F j, Y, g:i a'); ?><br />
+					</small>
+
 					<br />
 
 					<table class="table table-condensed">
 						<thead>
 							<tr>
-								<th>Test</th>
+								<th width="25%">Test</th>
 								<th>Result</th>
 								<th>Comment</th>
 							</tr>
