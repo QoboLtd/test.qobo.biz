@@ -35,7 +35,7 @@ abstract class PerformanceTest extends Test {
 		try {
 			$startTime = microtime(true);
 			$res = $httpClient->get($url);
-			$responseTime = microtime(time) - $startTime;
+			$responseTime = microtime(true) - $startTime;
 		}
 		catch(\Exception $e) {
 			$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::FAILURE, "Failed to fetch URL[$url]: " . $e->getMessage());
