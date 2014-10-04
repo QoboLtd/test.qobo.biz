@@ -1,18 +1,18 @@
 <?php
-namespace WebTester\Tests;
+namespace WebTester\Tests\Base;
 /**
- * BaseContentTest class
+ * BaseTypeTest class
  * 
  * @author Leonid Mamchenkov <l.mamchenkov@qobo.biz>
  */
-abstract class BaseContentTest extends BaseTest {
+abstract class BaseTypeTest extends BaseTest {
 
-	protected $name = 'Content Test';
-	protected $description = 'Check if the URL contains content.';
+	protected $name = 'Type Test';
+	protected $description = 'Check if the response is of certain content type.';
 	
 	public function __construct() {
 		parent::__construct();
-		$this->params->attach(new \WebTester\Parameters\TextParameter('contentRegex', true, 'Content to look for'));
+		$this->params->attach(new \WebTester\Parameters\SelectParameter('allowedMimeTypes', true, 'Allowed MIME types'));
 	}
 	
 	/**
@@ -30,22 +30,24 @@ abstract class BaseContentTest extends BaseTest {
 
 		$httpClient = $params['httpClient'];
 		$url = $params['url'];
-		$content = $params['contentRegex'];
+		$allowedMimeTypes = $params['allowedMimeTypes'];
 		
 		try {
 			$res = $httpClient->get($url);
-			$body = $res->getBody();
+			$contentType = $res->getHeader('content-type');
 		}
 		catch(\Exception $e) {
 			$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::FAILURE, "Failed to fetch URL[$url]: " . $e->getMessage());
 			return $this->lastResult;
 		}
 
-		if (preg_match($content, $body, $matches)) {
-				$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::SUCCESS, "Content contains [" . $matches[0] . "]");
+		foreach ($allowedMimeTypes as $allowedMimeType) {
+			if (preg_match('#' . $allowedMimeType . '#i', $contentType)) {
+				$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::SUCCESS, "Content-Type: $contentType");
 				return $this->lastResult;
 			}
-		$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::FAILURE, "Content does not contain [$content]");
+		}
+		$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::FAILURE, "Content-Type: $contentType");
 		
 		return $this->lastResult;
 	}

@@ -1,5 +1,5 @@
 <?php
-namespace WebTester\Tests;
+namespace WebTester\Tests\Base;
 /**
  * BaseUrlTest class
  * 

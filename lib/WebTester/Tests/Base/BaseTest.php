@@ -1,11 +1,11 @@
 <?php
-namespace WebTester\Tests;
+namespace WebTester\Tests\Base;
 /**
  * BaseTest class
  * 
  * @author Leonid Mamchenkov <l.mamchenkov@qobo.biz>
  */
-abstract class BaseTest implements iTest {
+abstract class BaseTest implements \WebTester\Tests\iTest {
 
 	protected $name;
 	protected $description;

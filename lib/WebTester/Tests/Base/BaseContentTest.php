@@ -1,18 +1,18 @@
 <?php
-namespace WebTester\Tests;
+namespace WebTester\Tests\Base;
 /**
- * BaseTypeTest class
+ * BaseContentTest class
  * 
  * @author Leonid Mamchenkov <l.mamchenkov@qobo.biz>
  */
-abstract class BaseTypeTest extends BaseTest {
+abstract class BaseContentTest extends BaseTest {
 
-	protected $name = 'Type Test';
-	protected $description = 'Check if the response is of certain content type.';
+	protected $name = 'Content Test';
+	protected $description = 'Check if the URL contains content.';
 	
 	public function __construct() {
 		parent::__construct();
-		$this->params->attach(new \WebTester\Parameters\SelectParameter('allowedMimeTypes', true, 'Allowed MIME types'));
+		$this->params->attach(new \WebTester\Parameters\TextParameter('contentRegex', true, 'Content to look for'));
 	}
 	
 	/**
@@ -30,24 +30,22 @@ abstract class BaseTypeTest extends BaseTest {
 
 		$httpClient = $params['httpClient'];
 		$url = $params['url'];
-		$allowedMimeTypes = $params['allowedMimeTypes'];
+		$content = $params['contentRegex'];
 		
 		try {
 			$res = $httpClient->get($url);
-			$contentType = $res->getHeader('content-type');
+			$body = $res->getBody();
 		}
 		catch(\Exception $e) {
 			$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::FAILURE, "Failed to fetch URL[$url]: " . $e->getMessage());
 			return $this->lastResult;
 		}
 
-		foreach ($allowedMimeTypes as $allowedMimeType) {
-			if (preg_match('#' . $allowedMimeType . '#i', $contentType)) {
-				$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::SUCCESS, "Content-Type: $contentType");
+		if (preg_match($content, $body, $matches)) {
+				$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::SUCCESS, "Content contains [" . $matches[0] . "]");
 				return $this->lastResult;
 			}
-		}
-		$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::FAILURE, "Content-Type: $contentType");
+		$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::FAILURE, "Content does not contain [$content]");
 		
 		return $this->lastResult;
 	}
