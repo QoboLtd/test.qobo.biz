@@ -6,17 +6,17 @@
  */
 
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'autoload.php';
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'WebTester' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 $result = null;
 
 if (isset($_SERVER['REQUEST_METHOD']) && (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST')) {
-	$httpClient = new GuzzleHttp\Client();
+	$httpClient = new \GuzzleHttp\Client();
 	$httpClient->timeout = 5;
 
 	$_POST['httpClient'] = $httpClient;
 	
-	$result = TestFactory::runTests($_POST);
+	$result = \WebTester\TestFactory::runTests($_POST);
 }
 ?>
 <!DOCTYPE html>

@@ -1,4 +1,5 @@
 <?php
+namespace WebTester\Parameters;
 /**
  * Parameter class
  * 
@@ -72,13 +73,13 @@ class Parameter implements iParameter {
 	 * Check if given value is valid for parameter
 	 * 
 	 * @param mixed $value Parameter value to validate
-	 * @return Result
+	 * @return \WebTester\Result\Result
 	 */
 	public function isValid($value) {
-		$result = new Result(Result::SUCCESS);
+		$result = new \WebTester\Result\Result(\WebTester\Result\Result::SUCCESS);
 
 		if ($this->required && empty($value)) {
-			$result = new Result(Result::FAILURE, "Required parameter [" . $this->getName() . "] cannot be empty");
+			$result = new \WebTester\Result\Result(\WebTester\Result\Result::FAILURE, "Required parameter [" . $this->getName() . "] cannot be empty");
 		}
 
 		return $result;

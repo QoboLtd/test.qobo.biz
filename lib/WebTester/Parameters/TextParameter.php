@@ -1,4 +1,5 @@
 <?php
+namespace WebTester\Parameters;
 /**
  * TextParameter class
  * 

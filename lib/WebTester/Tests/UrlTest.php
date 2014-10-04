@@ -1,4 +1,5 @@
 <?php
+namespace WebTester\Tests;
 /**
  * UrlTest class
  * 
@@ -30,17 +31,17 @@ class UrlTest extends BaseTest {
 			$statusCode = $res->getStatusCode();
 		}
 		catch(Exception $e) {
-			$this->lastResult = new Result(Result::FAILURE, "Failed to fetch URL[$url]: " . $e->getMessage());
+			$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::FAILURE, "Failed to fetch URL[$url]: " . $e->getMessage());
 		}
 
 		switch($statusCode) {
 			case '200':
 			case '301':
 			case '302':
-				$this->lastResult = new Result(Result::SUCCESS, "HTTP status code: $statusCode");
+				$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::SUCCESS, "HTTP status code: $statusCode");
 				break;
 			default:
-				$this->lastResult = new Result(Result::FAILURE, "HTTP status code: $statusCode");
+				$this->lastResult = new \WebTester\Result\Result(\WebTester\Result\Result::FAILURE, "HTTP status code: $statusCode");
 				break;
 		}
 		

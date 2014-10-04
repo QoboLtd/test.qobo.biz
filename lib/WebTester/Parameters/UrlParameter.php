@@ -1,4 +1,5 @@
 <?php
+namespace WebTester\Parameters;
 /**
  * UrlParameter class
  * 
@@ -22,7 +23,7 @@ class UrlParameter extends TextParameter {
 	 * Check if given value is valid for parameter
 	 * 
 	 * @param string $value Value to check
-	 * @return Result
+	 * @return \WebTester\Result\Result
 	 */
 	public function isValid($value) {
 		$parentResult = parent::isValid($value);
@@ -32,28 +33,28 @@ class UrlParameter extends TextParameter {
 
 		$urlParts = parse_url($value);
 		if (empty($urlParts)) {
-			return new Result(Result::FAILURE, "Invalid URL");
+			return new \WebTester\Result\Result(\WebTester\Result\Result::FAILURE, "Invalid URL");
 		}
 
 		$requiredParts = ['scheme', 'host'];
 		foreach ($requiredParts as $requredPart) {
 			if (empty($urlParts[$requredPart])) {
-				return new Result(Result::FAILURE, "URL needs $requredPart");
+				return new \WebTester\Result\Result(\WebTester\Result\Result::FAILURE, "URL needs $requredPart");
 			}
 		}
 
 		$bannedParts = ['user', 'pass', 'query', 'fragment'];
 		foreach ($bannedParts as $bannedPart) {
 			if (!empty($urlParts[$bannedPart])) {
-				return new Result(Result::FAILURE, "URL $bannedPart (" . $urlParts[$bannedPart] . ") are not supported");
+				return new \WebTester\Result\Result(\WebTester\Result\Result::FAILURE, "URL $bannedPart (" . $urlParts[$bannedPart] . ") are not supported");
 			}
 		}
 
 		if (!in_array($urlParts['scheme'], ['http', 'https'])) {
-			return new Result(Result::FAILURE, "URL scheme must be either http:// or https://");
+			return new \WebTester\Result\Result(\WebTester\Result\Result::FAILURE, "URL scheme must be either http:// or https://");
 		}
 
-		return new Result(Result::SUCCESS);
+		return new \WebTester\Result\Result(\WebTester\Result\Result::SUCCESS);
 
 	}
 

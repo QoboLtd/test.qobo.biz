@@ -1,4 +1,5 @@
 <?php
+namespace WebTester\Tests;
 /**
  * BaseTest class
  * 
@@ -17,15 +18,15 @@ abstract class BaseTest implements iTest {
 	 * @return object
 	 */
 	public function __construct() {
-		$this->params = new SplObjectStorage();
-		$this->params->attach(new UrlParameter('url', true, 'URL to test'));
-		$this->params->attach(new HttpClientParameter('httpClient', true, 'HTTP Client to use'));
+		$this->params = new \SplObjectStorage();
+		$this->params->attach(new \WebTester\Parameters\UrlParameter('url', true, 'URL to test'));
+		$this->params->attach(new \WebTester\Parameters\HttpClientParameter('httpClient', true, 'HTTP Client to use'));
 	}
 
 	/**
 	 * Get last test run result
 	 * 
-	 * @return Result
+	 * @return \WebTester\Result\Result
 	 */
 	public function getLastResult() {
 		return $this->lastResult;
@@ -35,7 +36,7 @@ abstract class BaseTest implements iTest {
 	 * Run test
 	 * 
 	 * @param array $params Associative array of parameters for the test run
-	 * @return Result
+	 * @return \WebTester\Result\Result
 	 */
 	abstract public function run($params = array());
 
@@ -84,13 +85,13 @@ abstract class BaseTest implements iTest {
 			$allParams->next();
 		}
 
-		return new Result(Result::SUCCESS);
+		return new \WebTester\Result\Result(\WebTester\Result\Result::SUCCESS);
 	}
 	
 	/**
 	 * Get test parameters setup
 	 * 
-	 * @return SplObjectStorage
+	 * @return \SplObjectStorage
 	 */
 	public function getParams() {
 		return $this->params;

@@ -1,4 +1,5 @@
 <?php
+namespace WebTester\Tests;
 /**
  * iTest interface
  * 
@@ -10,14 +11,14 @@ interface iTest {
 	 * Run test
 	 * 
 	 * @param array $params Optional parameters for test run
-	 * @return Result
+	 * @return \WebTester\Result\Result
 	 */
 	public function run($params = array());
 
 	/**
 	 * Get last run result
 	 * 
-	 * @return Result
+	 * @return \WebTester\Result\Result
 	 */
 	public function getLastResult();
 
@@ -39,14 +40,14 @@ interface iTest {
 	 * Validate params
 	 * 
 	 * @param array $params Parameters to validate
-	 * @return Result
+	 * @return \WebTester\Result\Result
 	 */
 	public function validParams($params = array());
 	
 	/**
 	 * Get supported parameters
 	 * 
-	 * @return SplObjectStorage
+	 * @return \SplObjectStorage
 	 */
 	public function getParams();
 }

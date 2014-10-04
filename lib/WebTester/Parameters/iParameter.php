@@ -1,4 +1,5 @@
 <?php
+namespace WebTester\Parameters;
 /**
  * iParameter interface
  * 
@@ -45,7 +46,7 @@ interface iParameter {
 	 * Validate value
 	 * 
 	 * @param mixed $value Value to validate
-	 * @return Result
+	 * @return \WebTester\Result\Result
 	 */
 	public function isValid($value);
 }

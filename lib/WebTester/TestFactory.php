@@ -1,4 +1,5 @@
 <?php
+namespace WebTester;
 /**
  * Test Factory
  * 
@@ -9,13 +10,13 @@ class TestFactory {
 	/**
 	 * Get all available tests
 	 * 
-	 * @return SplObjectStorage
+	 * @return \SplObjectStorage
 	 */
 	public static function getTests() {
-		$result = new SplObjectStorage();
+		$result = new \SplObjectStorage();
 		
 		$testsDir = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Tests';
-		$dir = new DirectoryIterator($testsDir);
+		$dir = new \DirectoryIterator($testsDir);
 		foreach ($dir as $file) {
 			// Non-recursive list
 			if ($file->isDir()) continue;	
@@ -23,12 +24,12 @@ class TestFactory {
 			// Non-PHP files
 			if ($file->getExtension() <> 'php') continue;
 			
-			$className = basename($file->getFilename(), '.' . $file->getExtension());
+			$className = '\WebTester\Tests\\' . basename($file->getFilename(), '.' . $file->getExtension());
 			
-			$reflection = new ReflectionCLass($className);
+			$reflection = new \ReflectionCLass($className);
 			
 			// Skip classes that don't implement iTest interface
-			if (!$reflection->implementsInterface('iTest')) {
+			if (!$reflection->implementsInterface('\WebTester\Tests\iTest')) {
 				continue;
 			}
 			
@@ -47,8 +48,8 @@ class TestFactory {
 	 * Run tests
 	 * 
 	 * @param array $params Parameters to pass to the tests
-	 * @param SplObjectStorage $tests (Optional) A list of tests to run. Will run all if omitted.
-	 * @return SplObjectStorage
+	 * @param \SplObjectStorage $tests (Optional) A list of tests to run. Will run all if omitted.
+	 * @return \SplObjectStorage
 	 */
 	public static function runTests($params = array(), $tests = null) {
 		if (empty($tests)) {

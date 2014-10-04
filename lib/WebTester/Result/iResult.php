@@ -1,4 +1,5 @@
 <?php
+namespace WebTester\Result;
 /**
  * iResult interface
  * 
