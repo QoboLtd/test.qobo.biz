@@ -1,24 +1,38 @@
 <?php
 /**
- * Load all requirements
+ * autoloader for namespaced classed
  * 
- * @todo Migrate to the properl spl_autoload_register();
  * @author Leonid Mamchenkov <l.mamchenkov@qobo.biz>
+ * @param string $class Class name, including namespace
  */
+function nameSpaceAutoLoader($class) {
+	$currentFolder = basename(dirname(__FILE__));
+	
+	$namespaces = explode('\\', $class);
+	$currentNamespace = array_search($currentFolder, $namespaces);
 
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Result' . DIRECTORY_SEPARATOR . 'iResult.php';
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Result' . DIRECTORY_SEPARATOR . 'Result.php';
+	// A requested class is not from our namespace
+	if ($currentNamespace === false) {
+		return;
+	}
+	// A requested class consists only of our namespace and nothing else
+	if (!isset($namespaces[ $currentNamespace + 1 ])) {
+		return;
+	}
+	
+	// Get namespace after the one which is current folder
+	$namespaces = array_slice($namespaces, $currentNamespace + 1);
+	
+	// Prefix with full path and suffix with file extension
+	$class = dirname(__FILE__) . DIRECTORY_SEPARATOR 
+		. implode(DIRECTORY_SEPARATOR, $namespaces)
+		. '.php';
 
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Parameters' . DIRECTORY_SEPARATOR . 'iParameter.php';
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Parameters' . DIRECTORY_SEPARATOR . 'Parameter.php';
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Parameters' . DIRECTORY_SEPARATOR . 'TextParameter.php';
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Parameters' . DIRECTORY_SEPARATOR . 'UrlParameter.php';
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Parameters' . DIRECTORY_SEPARATOR . 'HiddenParameter.php';
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Parameters' . DIRECTORY_SEPARATOR . 'HttpClientParameter.php';
+	// Avoid errors and warnings in autoloaders stack
+	if (file_exists($class)) {
+		include_once($class);
+	}
+}
 
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Tests' . DIRECTORY_SEPARATOR . 'iTest.php';
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Tests' . DIRECTORY_SEPARATOR . 'BaseTest.php';
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Tests' . DIRECTORY_SEPARATOR . 'UrlTest.php';
-
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'TestFactory.php';
+spl_autoload_register('nameSpaceAutoLoader');
 ?>
