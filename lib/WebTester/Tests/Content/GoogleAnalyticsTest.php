@@ -17,7 +17,7 @@ class GoogleAnalyticsTest extends \WebTester\Tests\Base\ContentTest {
 	 * @return Result
 	 */
 	public function run($params = array()) {
-		$params['contentRegex'] = '#google-analytics.com/ga.js#i';
+		$params['contentRegex'] = '#google-analytics.com/(ga|analytics).js#i';
 		parent::run($params);
 	}
 	
