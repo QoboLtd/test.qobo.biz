@@ -44,7 +44,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && (strtoupper($_SERVER['REQUEST_METHOD'])
 
 			<form class="navbar-form navbar-right" role="form" method="post">
 				<div class="form-group">
-					<input type="url" name="url" class="form-control" id="url" placeholder="http://www.qobo.biz" value="<?php echo empty($_POST['url']) ? 'http://www.qobo.biz' : $_POST['url']; ?>">
+					<input type="url" name="url" class="form-control" id="url" placeholder="http://test.qobo.biz" value="<?php echo empty($_POST['url']) ? 'http://test.qobo.biz' : $_POST['url']; ?>">
 				</div>
 				<input type="submit" class="btn btn-primary" value="Test">
 			</form>
