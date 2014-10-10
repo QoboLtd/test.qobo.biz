@@ -100,6 +100,8 @@ if (isset($_SERVER['REQUEST_METHOD']) && (strtoupper($_SERVER['REQUEST_METHOD'])
 		</div>
 	</div>
 
+	<a href="https://github.com/QoboLtd/test.qobo.biz"><img style="position:absolute;top:0;right:0;border:0;" src="img/github_forkme_right_green.png" /></a>
+
 	<div class="footer">
 		<div class="container">
 			<p class="text-right text-muted">&copy; Copyright <?php echo date('Y'); ?> <a href="http://www.qobo.biz">Qobo Ltd</a></p>
