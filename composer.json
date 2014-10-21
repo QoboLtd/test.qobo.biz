@@ -1,6 +1,7 @@
 {
 	"require": {
 		"guzzlehttp/guzzle": "4.*",
+		"qobo/pattern": "~1.0",
 		"qobo/phake-builder": "~1.0"
 	},
 	"require-dev": {

@@ -13,6 +13,7 @@ $result = null;
 if (isset($_SERVER['REQUEST_METHOD']) && (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST')) {
 	$_POST['httpClient'] = \WebTester\HttpClient::init();
 	$result = \WebTester\TestFactory::runTests($_POST);
+	$other = \WebTester\Other::getTests($_POST['url']);
 }
 ?>
 <!DOCTYPE html>
@@ -88,6 +89,25 @@ if (isset($_SERVER['REQUEST_METHOD']) && (strtoupper($_SERVER['REQUEST_METHOD'])
 							?>
 						</tbody>
 					</table>
+
+					<?php if (!empty($other)) : ?>
+						<style>
+							ul { display: inline; list-style: none; padding: 0; }
+							li { display: inline; }
+							li+li:before { content: ", "; }
+						</style>
+						Here are some more tests for your website:
+						<ul>
+						<?php
+							foreach ($other as $label => $url) {
+								echo '<li><a target="_blank" href="' . $url . '">' . $label . '</a></li>';
+							}
+						?>
+						</ul>.
+						<br />
+						<br />
+					<?php endif; ?>
+								
 				<?php else: ?>
 				<div class="well">
 					<h4>Welcome to the Qobo Web Tester</h4>

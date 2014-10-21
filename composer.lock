@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e09cfc77ec55d4370f2899d886a34974",
+    "hash": "1f47e21e87d982bc372130d9fe25a701",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
-            "version": "4.2.2",
+            "version": "4.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "9c4fbbf6457768f5036fbd88f1229f3fca812a5d"
+                "reference": "66fd916e9f9130bc22c51450476823391cb2f67c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/9c4fbbf6457768f5036fbd88f1229f3fca812a5d",
-                "reference": "9c4fbbf6457768f5036fbd88f1229f3fca812a5d",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/66fd916e9f9130bc22c51450476823391cb2f67c",
+                "reference": "66fd916e9f9130bc22c51450476823391cb2f67c",
                 "shasum": ""
             },
             "require": {
@@ -69,7 +69,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2014-09-08 22:11:58"
+            "time": "2014-10-05 19:29:14"
         },
         {
             "name": "guzzlehttp/streams",
@@ -125,6 +125,32 @@
             "time": "2014-08-17 21:15:53"
         },
         {
+            "name": "interconnectit/search-replace-db",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/interconnectit/Search-Replace-DB.git",
+                "reference": "12c6732502958a0c57125f6b30741e6e0f05655c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/interconnectit/Search-Replace-DB/zipball/12c6732502958a0c57125f6b30741e6e0f05655c",
+                "reference": "12c6732502958a0c57125f6b30741e6e0f05655c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "description": "A PHP search replace tool for quickly modifying a string throughout a database. Useful for changing the base URL when migrating a WordPress site from development to production.",
+            "homepage": "https://github.com/interconnectit/Search-Replace-DB",
+            "time": "2014-03-24 12:05:31"
+        },
+        {
             "name": "jaz303/phake",
             "version": "v0.6.0",
             "source": {
@@ -170,27 +196,31 @@
             "time": "2014-01-04 20:27:15"
         },
         {
-            "name": "mamchenkov/mysql-find-and-replace",
-            "version": "v1.0.0",
+            "name": "qobo/pattern",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mamchenkov/MySQL-FindAndReplace.git",
-                "reference": "d3b4b0ce0d546c244cfd08eb076481becd84a793"
+                "url": "https://github.com/QoboLtd/PHP-Pattern.git",
+                "reference": "57668c86f0caf3e66447f7341c5ee060181aa5b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mamchenkov/MySQL-FindAndReplace/zipball/d3b4b0ce0d546c244cfd08eb076481becd84a793",
-                "reference": "d3b4b0ce0d546c244cfd08eb076481becd84a793",
+                "url": "https://api.github.com/repos/QoboLtd/PHP-Pattern/zipball/57668c86f0caf3e66447f7341c5ee060181aa5b3",
+                "reference": "57668c86f0caf3e66447f7341c5ee060181aa5b3",
                 "shasum": ""
             },
             "require": {
-                "ext-mysqli": "*",
                 "php": ">=5.3.0"
             },
-            "bin": [
-                "bin/mysql-replace.php"
-            ],
+            "require-dev": {
+                "phpunit/phpunit": "4.3.*"
+            },
             "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Qobo\\Pattern\\": "src/"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0"
@@ -201,40 +231,34 @@
                     "email": "leonid@mamchenkov.net",
                     "homepage": "http://mamchenkov.net",
                     "role": "Developer"
-                },
-                {
-                    "name": "David Coveney",
-                    "homepage": "http://davidcoveney.com/",
-                    "role": "Author"
                 }
             ],
-            "description": "Find and replace tool for MySQL",
-            "homepage": "https://github.com/mamchenkov/MySQL-FindAndReplace",
+            "description": "PHP library to manipulate text patterns with placeholders",
+            "homepage": "https://github.com/QoboLtd/PHP-Pattern",
             "keywords": [
-                "database",
-                "find-replace",
-                "mysql",
-                "strings"
+                "strings",
+                "templating"
             ],
-            "time": "2014-10-10 06:52:30"
+            "time": "2014-10-12 11:38:58"
         },
         {
             "name": "qobo/phake-builder",
-            "version": "v1.0.4",
+            "version": "v1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/QoboLtd/phake-builder.git",
-                "reference": "de69b41147cc3155be93e40eb28070cafe641af1"
+                "reference": "d94b96bba431c70c5a8e14f1ac9af7e06a12967e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/QoboLtd/phake-builder/zipball/de69b41147cc3155be93e40eb28070cafe641af1",
-                "reference": "de69b41147cc3155be93e40eb28070cafe641af1",
+                "url": "https://api.github.com/repos/QoboLtd/phake-builder/zipball/d94b96bba431c70c5a8e14f1ac9af7e06a12967e",
+                "reference": "d94b96bba431c70c5a8e14f1ac9af7e06a12967e",
                 "shasum": ""
             },
             "require": {
+                "interconnectit/search-replace-db": "~3.0",
                 "jaz303/phake": "*",
-                "mamchenkov/mysql-find-and-replace": "1.0.*",
+                "qobo/pattern": "~1.0",
                 "vlucas/phpdotenv": "*"
             },
             "type": "library",
@@ -251,20 +275,20 @@
                 }
             ],
             "description": "A set of build and deploy files, based on jaz303/phake",
-            "time": "2014-10-15 11:46:57"
+            "time": "2014-10-18 14:56:57"
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v1.0.8",
+            "version": "v1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "e783b688cf5bc29a4ffd1b79c92eb4dd2a2e2237"
+                "reference": "56c252d48dce336da97926591aed71805203815b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/e783b688cf5bc29a4ffd1b79c92eb4dd2a2e2237",
-                "reference": "e783b688cf5bc29a4ffd1b79c92eb4dd2a2e2237",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/56c252d48dce336da97926591aed71805203815b",
+                "reference": "56c252d48dce336da97926591aed71805203815b",
                 "shasum": ""
             },
             "require": {
@@ -302,7 +326,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2014-10-14 15:06:44"
+            "time": "2014-10-16 14:50:21"
         }
     ],
     "packages-dev": [
@@ -609,16 +633,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.3.1",
+            "version": "4.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "06005259429c156c02596add91f6a59c7dc3d4af"
+                "reference": "5a0bc4dcbb7340c0a9a9bc3507854a67c564edc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/06005259429c156c02596add91f6a59c7dc3d4af",
-                "reference": "06005259429c156c02596add91f6a59c7dc3d4af",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/5a0bc4dcbb7340c0a9a9bc3507854a67c564edc4",
+                "reference": "5a0bc4dcbb7340c0a9a9bc3507854a67c564edc4",
                 "shasum": ""
             },
             "require": {
@@ -679,7 +703,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-10-06 06:20:35"
+            "time": "2014-10-16 16:53:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
