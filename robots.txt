@@ -7,3 +7,5 @@ Disallow: /composer.json
 Disallow: /composer.lock
 Disallow: /Phakefile
 Disallow: /README.md
+
+Sitemap: http://test.qobo.biz/sitemap.xml
