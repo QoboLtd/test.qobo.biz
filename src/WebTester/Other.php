@@ -14,6 +14,7 @@ class Other {
 	protected static $patterns = array(
 		'Am I Responsive?' => 'http://ami.responsivedesign.is/?url=%%url_encoded%%',
 		'Built With Report' => 'http://builtwith.com/%%host%%',
+		'DNSstuff DNS Report' => 'http://dnsstuff.com/tools#dnsReport|type=domain&&value=%%host%%',
 		'SSL Server Test' => 'https://www.ssllabs.com/ssltest/analyze.html?d=%%host%%',
 		'W3C Markup Validator' => 'http://validator.w3.org/check?uri=%%url_encoded%%',
 	);
